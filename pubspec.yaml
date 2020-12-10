@@ -48,9 +48,6 @@ flutter:
     - assets/icon/bar2.png
     - assets/icon/bar3.png
     - assets/icon/bar4.png
-    - assets/image/icecream1.png
-    - assets/image/icecream2.png
-    - assets/image/icecream3.png
     - assets/local_restaurant.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

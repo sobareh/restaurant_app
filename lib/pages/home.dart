@@ -7,6 +7,8 @@ import 'package:restaurant_app/widgets/menu_tile.dart';
 import 'package:restaurant_app/widgets/popular_tile.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = '/restaurant_home';
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -31,6 +33,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          buildNavBarItem('assets/icon/bar1.png', 0),
+          buildNavBarItem('assets/icon/bar2.png', 1),
+          buildNavBarItem('assets/icon/bar3.png', 2),
+          buildNavBarItem('assets/icon/bar4.png', 3),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -48,15 +59,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          buildNavBarItem('assets/icon/bar1.png', 0),
-          buildNavBarItem('assets/icon/bar2.png', 1),
-          buildNavBarItem('assets/icon/bar3.png', 2),
-          buildNavBarItem('assets/icon/bar4.png', 3),
-        ],
       ),
     );
   }
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 border: Border(
                   bottom: BorderSide(
                     width: 3,
-                    color: Color(0xff54A5DA),
+                    color: Colors.orange.withOpacity(0.9),
                   ),
                 ),
               )
@@ -86,7 +88,7 @@ class _HomePageState extends State<HomePage> {
           height: 32,
           width: 32,
           color: index == _selectedItemIndex
-              ? Color(0xff54A5DA)
+              ? Colors.orange.withOpacity(0.9)
               : Color(0xff747474),
         ),
       ),

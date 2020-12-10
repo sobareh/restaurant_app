@@ -12,10 +12,16 @@ class CategoryMenuWidget extends StatelessWidget {
       padding: EdgeInsets.only(right: 13),
       child: Column(
         children: <Widget>[
-          Image.asset(
-            urlImage,
-            width: 140,
-            height: 140,
+          Container(
+            height: 140.0,
+            width: 140.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(urlImage),
+              ),
+            ),
           ),
           SizedBox(
             height: 8,

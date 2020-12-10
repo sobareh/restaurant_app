@@ -13,23 +13,28 @@ class MenuTileWidget extends StatelessWidget {
         children: <Widget>[
           CategoryMenuWidget(
             subtitle: 'Sweets - 12 Item',
-            urlImage: 'assets/image/icecream1.png',
+            urlImage:
+                'https://images.pexels.com/photos/974229/pexels-photo-974229.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
           ),
           CategoryMenuWidget(
-            subtitle: 'Beverages - 42 Item',
-            urlImage: 'assets/image/icecream2.png',
+            subtitle: 'Beverages - 11 Item',
+            urlImage:
+                'https://images.pexels.com/photos/1200348/pexels-photo-1200348.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
           ),
           CategoryMenuWidget(
-            subtitle: 'Snack - 25 Item',
-            urlImage: 'assets/image/icecream3.png',
+            subtitle: 'Snack - 9 Item',
+            urlImage:
+                'https://images.pexels.com/photos/5446513/pexels-photo-5446513.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
           ),
           CategoryMenuWidget(
-            subtitle: 'Sour - 17 Item',
-            urlImage: 'assets/image/icecream1.png',
+            subtitle: 'Foods - 23 Item',
+            urlImage:
+                'https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
           ),
           CategoryMenuWidget(
-            subtitle: 'Desserts - 19 Item',
-            urlImage: 'assets/image/icecream2.png',
+            subtitle: 'Desserts - 15 Item',
+            urlImage:
+                'https://images.pexels.com/photos/5765719/pexels-photo-5765719.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
           ),
         ],
       ),
