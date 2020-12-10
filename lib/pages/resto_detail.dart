@@ -201,18 +201,29 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                           MediaQuery.removePadding(
                             context: context,
                             removeTop: true,
-                            child: ListView.builder(
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: widget.restaurant.menus.foods.length,
-                                itemBuilder: (context, index) {
-                                  Drink food =
-                                      widget.restaurant.menus.foods[index];
-                                  Drink drink =
-                                      widget.restaurant.menus.drinks[index];
-                                  return buildMenuItem(
-                                      context, isActive ? food : drink);
-                                }),
+                            child: isActive
+                                ? ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount:
+                                        widget.restaurant.menus.foods.length,
+                                    itemBuilder: (context, index) {
+                                      Drink food =
+                                          widget.restaurant.menus.foods[index];
+                                      return buildMenuItem(context, food);
+                                    },
+                                  )
+                                : ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount:
+                                        widget.restaurant.menus.drinks.length,
+                                    itemBuilder: (context, index) {
+                                      Drink drink =
+                                          widget.restaurant.menus.drinks[index];
+                                      return buildMenuItem(context, drink);
+                                    },
+                                  ),
                           ),
                         ],
                       ),
