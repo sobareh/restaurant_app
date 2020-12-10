@@ -26,7 +26,10 @@ class CategoryMenuWidget extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          Text(subtitle, style: Theme.of(context).textTheme.caption)
+          Text(
+            subtitle,
+            style: Theme.of(context).textTheme.caption,
+          ),
         ],
       ),
     );
