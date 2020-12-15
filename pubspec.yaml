@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.3
   google_fonts: ^1.1.1
+  http: ^0.12.2
+  provider: ^4.3.2+3
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +76,5 @@ flutter:
         - asset: assets/font/Nunito-Italic.ttf
         - asset: assets/font/Nunito-Black.ttf
         - asset: assets/font/Nunito-BlackItalic.ttf
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/models/restaurant_model.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_app/providers/restaurant_provider.dart';
 import 'package:restaurant_app/services/restaurant_services.dart';
 import 'package:restaurant_app/widgets/header.dart';
 import 'package:restaurant_app/widgets/list_restaurant.dart';
@@ -15,20 +16,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedItemIndex = 0;
-  List<RestaurantElement> restaurants;
-  bool loading;
-
-  @override
-  void initState() {
-    super.initState();
-    loading = true;
-    RestaurantService.loadRestaurants().then((list) {
-      setState(() {
-        restaurants = list;
-        loading = false;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,20 +29,38 @@ class _HomePageState extends State<HomePage> {
           buildNavBarItem('assets/icon/bar4.png', 3),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                HeaderWidget(),
-                MenuTileWidget(),
-                SizedBox(height: 24),
-                PopularTile(),
-                SizedBox(height: 24),
-                ListRestaurantWidget(restaurants: restaurants),
-                // SizedBox(height: 8),
-              ],
+      body: ChangeNotifierProvider<RestoProvider>(
+        create: (_) => RestoProvider(loadRestaurant: RestaurantService()),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              color: Colors.white,
+              child: Column(
+                children: [
+                  HeaderWidget(),
+                  MenuTileWidget(),
+                  SizedBox(height: 24),
+                  PopularTile(),
+                  SizedBox(height: 24),
+                  Consumer<RestoProvider>(
+                    builder: (context, state, _) {
+                      if (state.state == RestoState.Loading) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (state.state == RestoState.HasData) {
+                        return ListRestaurantWidget(
+                          restaurants: state.result.restaurants,
+                        );
+                      } else if (state.state == RestoState.NoData) {
+                        return Center(child: Text(state.message));
+                      } else if (state.state == RestoState.Error) {
+                        return Center(child: Text(state.message));
+                      } else {
+                        return Center(child: Text(''));
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

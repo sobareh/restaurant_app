@@ -1,30 +1,22 @@
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 import '../models/restaurant_model.dart';
-import 'package:flutter/services.dart' show rootBundle;
+// import 'package:flutter/services.dart' show rootBundle;
 
 class RestaurantService {
-  static Future<String> _loadRestaurantAsset() async {
-    return await rootBundle.loadString('assets/local_restaurant.json');
-  }
-
-  static Future<List<RestaurantElement>> loadRestaurants() async {
+  static Future loadRestaurants() async {
     try {
-      String jsonRestaurants = await _loadRestaurantAsset();
+      var response = await http.get('https://restaurant-api.dicoding.dev/list');
+      var jsonObject = json.decode(response.body);
 
-      var jsonObject = json.decode(jsonRestaurants);
-
-      List<dynamic> listResto =
-          (jsonObject as Map<String, dynamic>)['restaurants'];
-
-      List<RestaurantElement> restos = [];
-      for (int i = 0; i < listResto.length; i++) {
-        restos.add(RestaurantElement.fromJson(listResto[i]));
+      if (response.statusCode == 200) {
+        return Restaurant.fromJson(jsonObject);
+      } else {
+        throw Exception('Failed to load list restaurants.');
       }
-
-      return restos;
     } catch (e) {
-      return null;
+      throw Exception(
+          'cannot get data from internet. connection refused or error.');
     }
   }
 }

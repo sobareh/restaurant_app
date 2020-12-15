@@ -3,10 +3,7 @@ import 'package:restaurant_app/models/restaurant_model.dart';
 import 'package:restaurant_app/pages/resto_detail.dart';
 
 class ListRestaurantWidget extends StatelessWidget {
-  const ListRestaurantWidget({
-    Key key,
-    @required this.restaurants,
-  }) : super(key: key);
+  const ListRestaurantWidget({@required this.restaurants});
 
   final List<RestaurantElement> restaurants;
 
@@ -62,7 +59,8 @@ class ListRestaurantWidget extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    restaurant.pictureId,
+                    'https://restaurant-api.dicoding.dev/images/medium/' +
+                        restaurant.pictureId,
                   ),
                 ),
               ),

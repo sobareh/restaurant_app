@@ -13,7 +13,7 @@ class DetailRestaurant extends StatefulWidget {
 }
 
 class _DetailRestaurantState extends State<DetailRestaurant> {
-  bool isActive = true;
+  bool _isActive = true;
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +167,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                               FlatButton(
                                 onPressed: () {
                                   setState(() {
-                                    isActive = true;
+                                    _isActive = true;
                                   });
                                 },
                                 child: Text(
@@ -183,7 +183,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                               FlatButton(
                                 onPressed: () {
                                   setState(() {
-                                    isActive = false;
+                                    _isActive = false;
                                   });
                                 },
                                 child: Text(
@@ -198,33 +198,33 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                             ],
                           ),
                           SizedBox(height: 10),
-                          MediaQuery.removePadding(
-                            context: context,
-                            removeTop: true,
-                            child: isActive
-                                ? ListView.builder(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemCount:
-                                        widget.restaurant.menus.foods.length,
-                                    itemBuilder: (context, index) {
-                                      Drink food =
-                                          widget.restaurant.menus.foods[index];
-                                      return buildMenuItem(context, food);
-                                    },
-                                  )
-                                : ListView.builder(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemCount:
-                                        widget.restaurant.menus.drinks.length,
-                                    itemBuilder: (context, index) {
-                                      Drink drink =
-                                          widget.restaurant.menus.drinks[index];
-                                      return buildMenuItem(context, drink);
-                                    },
-                                  ),
-                          ),
+                          // MediaQuery.removePadding(
+                          //   context: context,
+                          //   removeTop: true,
+                          //   child: _isActive
+                          //       ? ListView.builder(
+                          //           physics: NeverScrollableScrollPhysics(),
+                          //           shrinkWrap: true,
+                          //           itemCount:
+                          //               widget.restaurant.menus.foods.length,
+                          //           itemBuilder: (context, index) {
+                          //             Drink food =
+                          //                 widget.restaurant.menus.foods[index];
+                          //             return buildMenuItem(context, food);
+                          //           },
+                          //         )
+                          //       : ListView.builder(
+                          //           physics: NeverScrollableScrollPhysics(),
+                          //           shrinkWrap: true,
+                          //           itemCount:
+                          //               widget.restaurant.menus.drinks.length,
+                          //           itemBuilder: (context, index) {
+                          //             Drink drink =
+                          //                 widget.restaurant.menus.drinks[index];
+                          //             return buildMenuItem(context, drink);
+                          //           },
+                          //         ),
+                          // ),
                         ],
                       ),
                     ),
@@ -238,52 +238,52 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
     );
   }
 
-  Container buildMenuItem(BuildContext context, Drink food) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 10.0),
-      child: Row(
-        children: <Widget>[
-          Container(
-            height: 100.0,
-            width: 100.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                  isActive
-                      ? 'https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
-                      : 'https://images.pexels.com/photos/792613/pexels-photo-792613.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                ),
-              ),
-            ),
-          ),
-          SizedBox(width: 10.0),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                food.name,
-                style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[600]),
-              ),
-              SizedBox(height: 5.0),
-              Container(
-                width: MediaQuery.of(context).size.width - 150,
-                child: Text(
-                  'you should consume ${food.name} per day according to the daily newspaper.',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey[600]),
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
+  // Container buildMenuItem(BuildContext context, Drink food) {
+  //   return Container(
+  //     padding: EdgeInsets.only(bottom: 10.0),
+  //     child: Row(
+  //       children: <Widget>[
+  //         Container(
+  //           height: 100.0,
+  //           width: 100.0,
+  //           decoration: BoxDecoration(
+  //             borderRadius: BorderRadius.circular(15.0),
+  //             image: DecorationImage(
+  //               fit: BoxFit.cover,
+  //               image: NetworkImage(
+  //                 _isActive
+  //                     ? 'https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
+  //                     : 'https://images.pexels.com/photos/792613/pexels-photo-792613.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //         SizedBox(width: 10.0),
+  //         Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: <Widget>[
+  //             Text(
+  //               food.name,
+  //               style: TextStyle(
+  //                   fontSize: 22,
+  //                   fontWeight: FontWeight.bold,
+  //                   color: Colors.grey[600]),
+  //             ),
+  //             SizedBox(height: 5.0),
+  //             Container(
+  //               width: MediaQuery.of(context).size.width - 150,
+  //               child: Text(
+  //                 'you should consume ${food.name} per day according to the daily newspaper.',
+  //                 style: TextStyle(
+  //                     fontSize: 14,
+  //                     fontWeight: FontWeight.bold,
+  //                     color: Colors.grey[600]),
+  //               ),
+  //             ),
+  //           ],
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 }

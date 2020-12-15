@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
               restaurant: ModalRoute.of(context).settings.arguments,
             ),
       },
-      home: HomePage(),
     );
   }
 }
