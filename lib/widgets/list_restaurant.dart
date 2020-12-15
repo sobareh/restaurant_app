@@ -3,7 +3,7 @@ import 'package:restaurant_app/models/restaurant_model.dart';
 import 'package:restaurant_app/pages/resto_detail.dart';
 
 class ListRestaurantWidget extends StatelessWidget {
-  const ListRestaurantWidget({@required this.restaurants});
+  ListRestaurantWidget({@required this.restaurants});
 
   final List<RestaurantElement> restaurants;
 
@@ -31,8 +31,8 @@ class ListRestaurantWidget extends StatelessWidget {
         Navigator.pushNamed(
           context,
           DetailRestaurant.routeName,
-          arguments: restaurant,
-        );
+          arguments: restaurant.id,
+        );   
       },
       child: Container(
         margin: EdgeInsets.fromLTRB(15, 3, 15, 5),
