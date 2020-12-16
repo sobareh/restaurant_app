@@ -45,7 +45,10 @@ class _HomePageState extends State<HomePage> {
                   Consumer<RestoProvider>(
                     builder: (context, state, _) {
                       if (state.state == RestoState.Loading) {
-                        return Center(child: CircularProgressIndicator());
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Center(child: CircularProgressIndicator()),
+                        );
                       } else if (state.state == RestoState.HasData) {
                         return ListRestaurantWidget(
                           restaurants: state.result.restaurants,

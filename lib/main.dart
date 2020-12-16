@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/pages/home.dart';
 import 'package:restaurant_app/pages/resto_detail.dart';
+import 'package:restaurant_app/pages/search_resto.dart';
 import 'theme.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Nunito',
         primarySwatch: Colors.blue,
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
         DetailRestaurant.routeName: (context) => DetailRestaurant(
               restaurantId: ModalRoute.of(context).settings.arguments,
             ),
+        SearchResto.routeName: (context) => SearchResto(),
       },
     );
   }

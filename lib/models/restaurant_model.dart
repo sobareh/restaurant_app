@@ -7,8 +7,8 @@ Restaurant restaurantFromJson(String str) =>
 class Restaurant {
   Restaurant({
     @required this.error,
-    @required this.message,
-    @required this.count,
+    this.message,
+    this.count,
     @required this.restaurants,
   });
 
