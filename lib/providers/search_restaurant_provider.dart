@@ -3,6 +3,7 @@ import 'package:restaurant_app/models/restaurant_search_model.dart';
 import 'package:restaurant_app/services/restaurant_services.dart';
 
 enum SearchRestoState {
+  Start,
   Loading,
   NoData,
   HasData,
@@ -12,9 +13,8 @@ enum SearchRestoState {
 
 class SearchRestoProvider extends ChangeNotifier {
   final String keyword;
-  final Future searchResto;
 
-  SearchRestoProvider({this.searchResto, this.keyword});
+  SearchRestoProvider({this.keyword});
 
   SearchRestaurant _restaurantList;
   String _message;
@@ -26,14 +26,20 @@ class SearchRestoProvider extends ChangeNotifier {
 
   SearchRestoState get state => _state;
 
-  Function get searchRestaurant => _searchRestaurant;
+  void getResto(SearchRestoState begin, String keyword) {
+    _state = begin;
+    _searchRestaurant(keyword);
+    print(_state);
+    notifyListeners();
+  }
 
   Future<dynamic> _searchRestaurant(String keyword) async {
     try {
       _state = SearchRestoState.Loading;
       notifyListeners();
 
-      final SearchRestaurant restaurantList = await RestaurantService.searchRestaurant(keyword);
+      final SearchRestaurant restaurantList =
+          await RestaurantService.searchRestaurant(keyword);
 
       if (restaurantList.restaurants.isEmpty) {
         _state = SearchRestoState.NoData;
