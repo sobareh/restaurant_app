@@ -19,12 +19,15 @@ class SearchRestoProvider extends ChangeNotifier {
   SearchRestaurant _restaurantList;
   String _message;
   SearchRestoState _state;
+  bool _isActive = false;
 
   String get message => _message;
 
   SearchRestaurant get result => _restaurantList;
 
   SearchRestoState get state => _state;
+
+  bool get isActive => _isActive;
 
   void getResto(SearchRestoState begin, String keyword) {
     _state = begin;
@@ -33,13 +36,17 @@ class SearchRestoProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void showSearchResult() {
+    _isActive = true;
+    notifyListeners();
+  }
+
   Future<dynamic> _searchRestaurant(String keyword) async {
     try {
       _state = SearchRestoState.Loading;
       notifyListeners();
 
-      final SearchRestaurant restaurantList =
-          await RestaurantService.searchRestaurant(keyword);
+      final SearchRestaurant restaurantList = await RestaurantService.searchRestaurant(keyword);
 
       if (restaurantList.restaurants.isEmpty) {
         _state = SearchRestoState.NoData;
